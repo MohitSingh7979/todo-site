@@ -1,0 +1,8 @@
+body{
+  background-color: thistle;
+}
+.task_list_container{
+  background-color: black;
+  height: 100%;
+  width: 100%;
+}
