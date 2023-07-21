@@ -1,0 +1,14 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "this is simple webapp for todo",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "node src/server.js"
+  },
+  "dependencies":{
+    "express": ""
+  },
+  "author": "",
+  "license": "ISC"
+}
