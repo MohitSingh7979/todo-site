@@ -1,8 +1,40 @@
 body{
+  margin: 0%;
+  padding: 1% 2% 1% 1%;
   background-color: thistle;
+  font-size: large;
 }
-.task_list_container{
-  background-color: black;
-  height: 100%;
-  width: 100%;
+input:hover {
+  box-shadow: 0px 0px 23px 6px blueviolet;
+}
+#task_list_container{
+  padding: 1em;
+  background-color: #cc25ff;
+}
+#task_list{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin: 1rem;
+  padding: 1rem;
+  padding: 1em;
+  padding-left: 2em;
+  background-color: #ff25b3;
+}
+.task{
+  border: 2px solid black;
+  list-style-type: none;
+}
+.task:hover{
+  box-shadow: 0 0 0.5em rgb(255, 244, 22);
+}
+.border{
+  border-radius: 1rem;
+  pad: 1rem;
+}
+span{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

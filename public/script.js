@@ -17,6 +17,7 @@ function createItem(taskItem){
   const {task, id, isDone} = taskItem;
   const item = document.createElement("li");
   item.id = id;
+  item.classList.add('task');
   item.isDone = isDone;
   item.innerHTML = `<form>
                       <span>
@@ -41,19 +42,21 @@ function applyIteractions(item) {
   const chboxElem = item.querySelector("input");
   const btnElem = item.querySelector("button");
 
-  const isDone = JSON.parse(item.isDone);
+  let isDone = JSON.parse(item.isDone);
 
   markTask(isDone, taskElem);
 
-  chboxElem.addEventListener("click", ()=>{
+  chboxElem.addEventListener("click", () => {
+    isDone = !isDone;    
     const id = item.id;
-    fetch(`/item?id=${id}&isDone=${!isDone}`, {method: "POST"})
+    fetch(`/item?id=${id}&isDone=${isDone}`, {method: "POST"})
       .then(()=>{
-        markTask(!isDone, taskElem);
+        markTask(isDone, taskElem);
       });
   });
 
-  btnElem.addEventListener("click", ()=>{
+  btnElem.addEventListener("click", (eve) => {
+    eve.preventDefault();
     const id = item.id;
     fetch(`/item?id=${id}`, {method: "DELETE"})
       .then(()=>{
