@@ -12,33 +12,34 @@
 // }
 
 // 
-//
-function createItem(taskItem){
-  const {task, id, isDone} = taskItem;
+//[[abc               de]
+//fg]
+function createItem(taskItem) {
+  const { task, id, isDone } = taskItem;
   const item = document.createElement("li");
   item.id = id;
   item.classList.add('task');
   item.isDone = isDone;
   item.innerHTML = `<form>
-                      <span>
-                        <span style="text-decoration: underline">${task}</span>
-                        <input type="checkbox"/>
-                      </span>
+                      <span style="text-decoration: underline">${task}</span>
+                      <div class="controls">
+                      <input type="checkbox"/>
                       <button type="submit">X</button>
+                      </div>
                     </form>`;
   return item;
 }
 
-function markTask(condition, taskElem){
-    if(condition){
-      taskElem.style.setProperty("text-decoration", "line-through");
-    }else{
-      taskElem.style.setProperty("text-decoration", "underline");
-    }
+function markTask(condition, taskElem) {
+  if (condition) {
+    taskElem.style.setProperty("text-decoration", "line-through");
+  } else {
+    taskElem.style.setProperty("text-decoration", "underline");
+  }
 }
 
 function applyIteractions(item) {
-  const taskElem = item.querySelector("span span");
+  const taskElem = item.querySelector("span");
   const chboxElem = item.querySelector("input");
   const btnElem = item.querySelector("button");
 
@@ -47,10 +48,10 @@ function applyIteractions(item) {
   markTask(isDone, taskElem);
 
   chboxElem.addEventListener("click", () => {
-    isDone = !isDone;    
+    isDone = !isDone;
     const id = item.id;
-    fetch(`/item?id=${id}&isDone=${isDone}`, {method: "POST"})
-      .then(()=>{
+    fetch(`/item?id=${id}&isDone=${isDone}`, { method: "POST" })
+      .then(() => {
         markTask(isDone, taskElem);
       });
   });
@@ -58,21 +59,20 @@ function applyIteractions(item) {
   btnElem.addEventListener("click", (eve) => {
     eve.preventDefault();
     const id = item.id;
-    fetch(`/item?id=${id}`, {method: "DELETE"})
-      .then(()=>{
+    fetch(`/item?id=${id}`, { method: "DELETE" })
+      .then(() => {
         fetchAndShowList();
       });
 
   });
 }
 
-function addItem(taskListElem, task){
-  fetch(`/item?task=${task}`, {method: "PUT"})
-    .then(()=>{
+function addItem(taskListElem, task) {
+  fetch(`/item?task=${task}`, { method: "PUT" })
+    .then(() => {
       fetchAndShowList();
     });
 }
-
 
 const formElem = document.getElementById("form_task");
 const taskListElem = document.getElementById("task_list");
@@ -86,13 +86,12 @@ formElem.addEventListener("submit", (eve) => {
   formElem.reset();
 });
 
-
-function fetchAndShowList(){
+function fetchAndShowList() {
   fetch("/items")
-    .then(res=>res.json())
-    .then(list=>{
-      taskListElem.innerHTML="";
-      for(const id in list){
+    .then(res => res.json())
+    .then(list => {
+      // taskListElem.innerHTML = "";
+      for (const id in list) {
         const taskItem = list[id];
         const item = createItem(taskItem);
         applyIteractions(item);

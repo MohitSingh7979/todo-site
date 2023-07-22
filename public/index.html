@@ -12,12 +12,12 @@
 
     <div>
       <form id="form_task">
-        <input type="text" name="task" />
+        <input type="text" name="task" pattern="[A-z][0-9]{1-10}" required/>
         <input type="submit" value="Add Task" />
       </form>
     </div>
-    <div id="task_list_container" class="border">
-      <ul id="task_list" class="border">
+    <div id="task_list_container">
+      <ul id="task_list">
       </ul>
     </div>
     
