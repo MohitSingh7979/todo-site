@@ -8,7 +8,58 @@ app.use("/static", express.static(path.join(__dirname, "..", "public")));
 
 class Item {
 
-  static list = {};
+  static list = {
+    "3284": {
+      "task": "lohiya",
+      "isDone": true,
+      "id": "3284"
+    },
+    "48c5": {
+      "task": "mohit",
+      "isDone": false,
+      "id": "48c5"
+    },
+    "2b91": {
+      "task": "singh",
+      "isDone": true,
+      "id": "2b91"
+    },
+    "48f6": {
+      "task": "ankush",
+      "isDone": false,
+      "id": "48f6"
+    },
+    "39e8": {
+      "task": "ankit",
+      "isDone": false,
+      "id": "39e8"
+    },
+    "3f55": {
+      "task": "swami",
+      "isDone": false,
+      "id": "3f55"
+    },
+    "2eb0": {
+      "task": "shivam",
+      "isDone": true,
+      "id": "2eb0"
+    },
+    "27fa": {
+      "task": "gupta",
+      "isDone": false,
+      "id": "27fa"
+    },
+    "32c1": {
+      "task": "surender",
+      "isDone": false,
+      "id": "32c1"
+    },
+    "455f": {
+      "task": "kumar",
+      "isDone": false,
+      "id": "455f"
+    }
+  };
 
   static findItem(fid) {
     return Item.list[fid];
