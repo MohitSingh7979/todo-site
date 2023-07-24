@@ -4,11 +4,14 @@
   "description": "this is simple webapp for todo",
   "main": "src/server.js",
   "scripts": {
-    "test": "node src/server.js"
+    "start": "node src/server.js"
   },
-  "dependencies":{
-    "express": ""
+  "dependencies": {
+    "express": "^4.18.2"
   },
-  "author": "",
+  "engines": {
+    "node": "14.x"
+  },
+  "author": "Mohit Singh",
   "license": "ISC"
 }
